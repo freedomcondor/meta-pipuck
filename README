@@ -33,7 +33,7 @@ I. Prepare layers
   2. clone openembedded
 
       cd poky-zeus
-	  git clone -b zeus git://git.openembedded.org/meta-openembedded
+      git clone -b zeus git://git.openembedded.org/meta-openembedded
 
   3. clone meta-raspberrypi
 
@@ -50,30 +50,30 @@ II. Build an image
       source oe-init-build-env
 
   2. add the dependencies into build/conf/bblayers.conf
-      change the BBLAYERS variable inside bblayers.conf to add meta-oe, meta-multimedia, meta-networking, meta-python, meta-raspberrypi and meta-pipuck
-	  note that meta-oe, meta-multimedia, meta-networking and meta-python is inside meta-openembedded folder
-	  your BBLAYERS should look similar to :
+        change the BBLAYERS variable inside bblayers.conf to add meta-oe, meta-multimedia, meta-networking, meta-python, meta-raspberrypi and meta-pipuck
+        note that meta-oe, meta-multimedia, meta-networking and meta-python is inside meta-openembedded folder
+        your BBLAYERS should look similar to :
 
-		BBLAYERS ?= " \
-		  /home/harry/poky-zeus/meta \
-		  /home/harry/poky-zeus/meta-poky \
-		  /home/harry/poky-zeus/meta-yocto-bsp \
-		  /home/harry/poky-zeus/meta-openembedded/meta-oe \
-		  /home/harry/poky-zeus/meta-openembedded/meta-multimedia \
-		  /home/harry/poky-zeus/meta-openembedded/meta-networking \
-		  /home/harry/poky-zeus/meta-openembedded/meta-python \
-		  /home/harry/poky-zeus/meta-raspberrypi \
-		  /home/harry/poky-zeus/meta-pipuck \
-		  "
+        BBLAYERS ?= " \
+          /home/harry/poky-zeus/meta \
+          /home/harry/poky-zeus/meta-poky \
+          /home/harry/poky-zeus/meta-yocto-bsp \
+          /home/harry/poky-zeus/meta-openembedded/meta-oe \
+          /home/harry/poky-zeus/meta-openembedded/meta-multimedia \
+          /home/harry/poky-zeus/meta-openembedded/meta-networking \
+          /home/harry/poky-zeus/meta-openembedded/meta-python \
+          /home/harry/poky-zeus/meta-raspberrypi \
+          /home/harry/poky-zeus/meta-pipuck \
+          "
 
   3. set MACHINE and other option in build/conf/local.conf
       add the following two lines at the bottom of the build/conf/local.conf
 
-		MACHINE = "raspberrypi0-wifi"
-		ENABLE_UART = "1"
+        MACHINE = "raspberrypi0-wifi"
+        ENABLE_UART = "1"
 
   4. compile
-       bitbake core-image-pipuck
+        bitbake core-image-pipuck
 
 III. Prepare an sd-card
 ================================================
@@ -81,10 +81,9 @@ III. Prepare an sd-card
   1. use dd to make a sd-card
 
       After bitbake core-image-pipuck, the image is located inside poky-zeus/build/tmp/deploy/images/raspberrypi0-wifi, 
-	  the file name is called core-image-pipuck-raspberrypi0-wifi.rpi-sdimg. 
-	  dd that file into your sd-card, suppose your sd-card is /dev/sdc, then:
+      the file name is called core-image-pipuck-raspberrypi0-wifi.rpi-sdimg. 
+      dd that file into your sd-card, suppose your sd-card is /dev/sdc, then:
 
         cd tmp/deploy/images/raspberrypi0-wifi
-		sudo dd if=core-image-pipuck-raspberrypi0-wifi.rpi-sdimg of=/dev/sdc
+        sudo dd if=core-image-pipuck-raspberrypi0-wifi.rpi-sdimg of=/dev/sdc
 
---- replace with specific information about the meta-pipuck layer ---
